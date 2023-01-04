@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "390426537605",
+    "project_id": "app-doctors-wala",
+    "storage_bucket": "app-doctors-wala.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390426537605:android:076c6c6d9024faf12103ec",
+        "android_client_info": {
+          "package_name": "com.DoctorsWala.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390426537605-g35hqfiq82maiveu45e5cf6tjbc7h9pu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHlsBTr9EzeytkPGaMnqQ4b8N32yRL65w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390426537605-g35hqfiq82maiveu45e5cf6tjbc7h9pu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
