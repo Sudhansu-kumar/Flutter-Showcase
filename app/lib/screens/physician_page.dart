@@ -1,23 +1,21 @@
-
-
+import "package:flutter/material.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
-class SurgenPage extends StatefulWidget {
-  const SurgenPage({super.key});
+class PhysicianPage extends StatefulWidget {
+  const PhysicianPage({super.key});
 
   @override
-  State<SurgenPage> createState() => _SurgenPageState();
+  State<PhysicianPage> createState() => _PhysicianPageState();
 }
 
-class _SurgenPageState extends State<SurgenPage> {
+class _PhysicianPageState extends State<PhysicianPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: const Text(
-          'Surgen', style: TextStyle(
+          'Physician', style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -26,7 +24,7 @@ class _SurgenPageState extends State<SurgenPage> {
 
          
         body: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection("Surgen").snapshots(),
+          stream: FirebaseFirestore.instance.collection("Physician").snapshots(),
           builder: (context , snapshot) {
 
             if(snapshot.connectionState == ConnectionState.active)
@@ -37,7 +35,7 @@ class _SurgenPageState extends State<SurgenPage> {
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context , index){
 
-                    Map<String , dynamic> Surgen = snapshot.data!.docs[index].data() as Map<String , dynamic>;
+                    Map<String , dynamic> Physician = snapshot.data!.docs[index].data() as Map<String , dynamic>;
 
                     return Padding(
                       padding: const EdgeInsets.only(top: 15.0, left: 10),
@@ -48,21 +46,21 @@ class _SurgenPageState extends State<SurgenPage> {
                         onTap: (){},
                         leading: CircleAvatar(
                           maxRadius: 30,
-                          backgroundImage: NetworkImage(Surgen["pic"],),
+                          backgroundImage: NetworkImage(Physician["pic"],),
                         ),
-                        title: Text(Surgen["name"],
+                        title: Text(Physician["name"],
                         style: const TextStyle(
                           fontSize: 20,
                         ),
                         ),
-                        subtitle: Text(Surgen["specialization"],
+                        subtitle: Text(Physician["specialization"],
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: Colors.cyan,
                         ),
                         ),
-                        trailing: Text("₹ "+Surgen["fees"]),
+                        trailing: Text("₹ "+Physician["fees"]),
                       ),
                     );
                     Divider(height: 20,);
