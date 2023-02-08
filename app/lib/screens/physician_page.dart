@@ -1,3 +1,4 @@
+import 'package:app/screens/indivvidual_doctors_page.dart';
 import "package:flutter/material.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -7,6 +8,8 @@ class PhysicianPage extends StatefulWidget {
   @override
   State<PhysicianPage> createState() => _PhysicianPageState();
 }
+
+Stream documentSnap = FirebaseFirestore.instance.collection("Physician").snapshots();
 
 class _PhysicianPageState extends State<PhysicianPage> {
   @override
@@ -24,7 +27,7 @@ class _PhysicianPageState extends State<PhysicianPage> {
 
          
         body: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection("Physician").snapshots(),
+          stream: FirebaseFirestore.instance.collection("Physician").snapshots(includeMetadataChanges: true),
           builder: (context , snapshot) {
 
             if(snapshot.connectionState == ConnectionState.active)
@@ -43,7 +46,11 @@ class _PhysicianPageState extends State<PhysicianPage> {
                         contentPadding: EdgeInsets.only(left: 50, right: 10),
                         tileColor: Colors.purple.shade50,
                         minLeadingWidth: 70,
-                        onTap: (){},
+                        onTap: (){
+
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => IndividualPage(name: '')));
+                        
+                        },
                         leading: CircleAvatar(
                           maxRadius: 30,
                           backgroundImage: NetworkImage(Physician["pic"],),
@@ -63,7 +70,7 @@ class _PhysicianPageState extends State<PhysicianPage> {
                         trailing: Text("₹ "+Physician["fees"]),
                       ),
                     );
-                    Divider(height: 20,);
+                    
                   },
                 );
               }else{
